@@ -1,4 +1,8 @@
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/account/services/account_services.dart';
+import 'package:amazon_clone/features/account/widgets/account_button.dart';
+import 'package:amazon_clone/features/admin/screen/analtyics_screen.dart';
+import 'package:amazon_clone/features/admin/screen/orders_screen.dart';
 import 'package:amazon_clone/features/admin/screen/posts_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,12 +20,8 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
-    const Center(
-      child: Text('Analytics Page'),
-    ),
-    const Center(
-      child: Text('Cart Page'),
-    ),
+    const AnalyticsScreen(),
+    const OrdersScreen(),
   ];
 
   void updatePage(int page) {
@@ -52,6 +52,10 @@ class _AdminScreenState extends State<AdminScreen> {
                   height: 45,
                   color: Colors.black,
                 ),
+              ),
+              AccountButton(
+                text: 'Log Out',
+                onTap: () => AccountServices().logOut(context),
               ),
               const Text(
                 'Admin',
